@@ -173,7 +173,7 @@
                                     <h6 class="text-sm text-muted m-0">You have <strong class="text-primary">13</strong> notifications.</h6>
                                 </div>
                                 <!-- List group -->
-                                <div class="list-group list-group-flush">
+                                var_dump($_SESSION['mobileOtp']);     <div class="list-group list-group-flush">
                                     <a href="#!" class="list-group-item list-group-item-action">
                                         <div class="row align-items-center">
                                             <div class="col-auto">

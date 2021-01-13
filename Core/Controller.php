@@ -2,20 +2,28 @@
 require_once "./Config/config.php";
 class Controller
 {
-
-    private $model;
-    private $view;
-    private $vars = [];
+    protected $model;
+    protected $view;
 
     public function __construct($name)
     {
         $name = preg_replace("/Controller/", "", $name);
-        $model = $name . "Model";
-        $model = new $model();
-        $this->model = $model;
+        $this->setView($name);
+        $this->setModel($name);
+    }
+    public function setModel($name)
+    {
+        $name = ucfirst(strtolower($name));
+        $model =  $name . "Model";
+        require_once "./Models/" . $model . ".php";
+        $this->model = new $model();
+    }
+    public function setView($name)
+    {
+        $name = ucfirst(strtolower($name));
         $this->view = "./Views/" . $name . "View.php";
     }
-    public function render()
+    public function render($data)
     {
         if (file_exists($this->view)) {
             include $this->view;

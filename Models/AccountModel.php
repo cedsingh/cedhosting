@@ -1,19 +1,15 @@
 <?php
-include_once("./Config/DBConf.php");
-class AccountModel
+require_once "./Core/Model.php";
+class AccountModel extends Model
 {
-    private $db;
-    function __construct()
-    {
-        $this->db = new DBConf();
-    }
+
     function isUser($email, $mobile)
     {
         $sql = "SELECT * FROM `tbl_user` WHERE email = :email OR mobile= :mobile";
-        $this->db->query($sql);
-        $this->db->set(":email", $email);
-        $this->db->set(":mobile", $mobile);
-        $result = $this->db->single();
+        $this->query($sql);
+        $this->set(":email", $email);
+        $this->set(":mobile", $mobile);
+        $result = $this->single();
         if ($result) {
             return true;
         }
@@ -22,14 +18,14 @@ class AccountModel
     function isAdmin($id)
     {
         $sql = "SELECT * FROM `tbl_user` WHERE id = $id AND is_admin = 1";
-        $this->db->query($sql);
-        $result = $this->db->single();
+        $this->query($sql);
+        $result = $this->single();
         if ($result) {
             return true;
         }
         return false;
     }
-    function addUser()
+    function addUser($data)
     {
         $sql = "INSERT INTO `tbl_user` (
             `email`,
@@ -46,8 +42,14 @@ class AccountModel
             :security_question,
             :security_answer
         )";
-        $this->db->query($sql);
-        if ($this->db->run()) {
+        $this->query($sql);
+        $this->set(":email", $data[0]);
+        $this->set(":name", $data[1]);
+        $this->set(":mobile", $data[2]);
+        $this->set(":password", md5($data[3]));
+        $this->set(":security_question", $data[4]);
+        $this->set(":security_answer", $data[5]);
+        if ($this->run()) {
             return true;
         }
         return false;
@@ -56,8 +58,8 @@ class AccountModel
     function getUserById($id)
     {
         $sql = "SELECT * FROM `tbl_user` WHERE id = $id";
-        $this->db->query($sql);
-        $result = $this->db->single();
+        $this->query($sql);
+        $result = $this->single();
         if ($result) {
             return $result;
         }
