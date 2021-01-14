@@ -1,5 +1,5 @@
 <?php
-require_once "./Core/Model.php";
+require_once APP_ROOT . "/Core/Model.php";
 class AccountModel extends Model
 {
 

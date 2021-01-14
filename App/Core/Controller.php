@@ -1,9 +1,9 @@
 <?php
-require_once "./Config/config.php";
 class Controller
 {
     protected $model;
     protected $view;
+    public $params = [];
 
     public function __construct($name)
     {
@@ -15,14 +15,15 @@ class Controller
     {
         $name = ucfirst(strtolower($name));
         $model =  $name . "Model";
-        require_once "./Models/" . $model . ".php";
+        require_once APP_ROOT . "/Models/" . $model . ".php";
         $this->model = new $model();
     }
     public function setView($name)
     {
         $name = ucfirst(strtolower($name));
-        $this->view = "./Views/" . $name . "View.php";
+        $this->view = APP_ROOT . "/Views/" . $name . "View.php";
     }
+
     public function render($data)
     {
         if (file_exists($this->view)) {

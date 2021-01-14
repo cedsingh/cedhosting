@@ -158,3 +158,25 @@ function verifyOtp(type = "email") {
 }
 
 /** OTP confirmation functions */
+
+//Add to cart
+
+function addToCart(elId, productId) {
+  let el = $("#" + elId);
+  el.prop("disabled", true);
+  $.ajax({
+    url: "index.php?action=rest&method=addtocart",
+    method: "post",
+    dataType: "json",
+    data: {
+      id: productId,
+    },
+    error: (e) => console.log(e),
+    success: (res) => {
+      if (res["cart"]) {
+        el.html("added");
+        $("#cartValue").html(res["count"]);
+      }
+    },
+  });
+}

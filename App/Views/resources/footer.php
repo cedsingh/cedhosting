@@ -2,7 +2,7 @@
 <div class="facebook-section">
     <div class="container">
         <div class="face-top">
-            <h5><img src="Public/images/facebook.png"><span>A Make in India Initiative.</span>
+            <h5><img src="images/facebook.png"><span>A Make in India Initiative.</span>
                 <h5>
         </div>
     </div>
@@ -14,25 +14,25 @@
                 <h4>flickr widget</h4>
                 <div class="footer-top">
                     <div class="col-md-4 foot-top">
-                        <img src="Public/images/f1.jpg" class="img-responsive" alt="" />
+                        <img src="images/f1.jpg" class="img-responsive" alt="" />
                     </div>
                     <div class="col-md-4 foot-top">
-                        <img src="Public/images/f2.jpg" class="img-responsive" alt="" />
+                        <img src="images/f2.jpg" class="img-responsive" alt="" />
                     </div>
                     <div class="col-md-4 foot-top">
-                        <img src="Public/images/f3.jpg" class="img-responsive" alt="" />
+                        <img src="images/f3.jpg" class="img-responsive" alt="" />
                     </div>
                     <div class="clearfix"></div>
                 </div>
                 <div class="footer-top second">
                     <div class="col-md-4 foot-top">
-                        <img src="Public/images/f4.jpg" class="img-responsive" alt="" />
+                        <img src="images/f4.jpg" class="img-responsive" alt="" />
                     </div>
                     <div class="col-md-4 foot-top">
-                        <img src="Public/images/f1.jpg" class="img-responsive" alt="" />
+                        <img src="images/f1.jpg" class="img-responsive" alt="" />
                     </div>
                     <div class="col-md-4 foot-top">
-                        <img src="Public/images/f2.jpg" class="img-responsive" alt="" />
+                        <img src="images/f2.jpg" class="img-responsive" alt="" />
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -55,7 +55,7 @@
                 <h4>recent posts</h4>
                 <div class="recent-grids">
                     <div class="col-md-4 recent-great">
-                        <img src="Public/images/f4.jpg" class="img-responsive" alt="" />
+                        <img src="images/f4.jpg" class="img-responsive" alt="" />
                     </div>
                     <div class="col-md-8 recent-great1">
                         <a href="#">This is my lovely headline title for this footer section.</a>
@@ -65,7 +65,7 @@
                 </div>
                 <div class="recent-grids">
                     <div class="col-md-4 recent-great">
-                        <img src="Public/images/f1.jpg" class="img-responsive" alt="" />
+                        <img src="images/f1.jpg" class="img-responsive" alt="" />
                     </div>
                     <div class="col-md-8 recent-great1">
                         <a href="#">This is my lovely headline title for this footer section.</a>
@@ -75,7 +75,7 @@
                 </div>
                 <div class="recent-grids">
                     <div class="col-md-4 recent-great">
-                        <img src="Public/images/f3.jpg" class="img-responsive" alt="" />
+                        <img src="images/f3.jpg" class="img-responsive" alt="" />
                     </div>
                     <div class="col-md-8 recent-great1">
                         <a href="#">This is my lovely headline title for this footer section.</a>
@@ -103,6 +103,6 @@
 <!---footer--->
 
 </body>
-<script type="text/javascript" src="Public/js/index.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
 
 </html>

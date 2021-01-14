@@ -22,7 +22,7 @@ class AdminController extends Controller
                 $parent,
                 $name,
                 $available,
-                htmlentities($description)
+                $description
             ];
             if ($this->model->addCategory($data)) {
                 $data['msg'] = "Category added";

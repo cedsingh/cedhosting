@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
     <meta name="author" content="Creative Tim">
-    <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
+    <title><?= $data['title'] ?></title>
     <!-- Favicon -->
     <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
     <!-- Fonts -->
@@ -173,7 +173,7 @@
                                     <h6 class="text-sm text-muted m-0">You have <strong class="text-primary">13</strong> notifications.</h6>
                                 </div>
                                 <!-- List group -->
-                                var_dump($_SESSION['mobileOtp']);     <div class="list-group list-group-flush">
+                                var_dump($_SESSION['mobileOtp']); <div class="list-group list-group-flush">
                                     <a href="#!" class="list-group-item list-group-item-action">
                                         <div class="row align-items-center">
                                             <div class="col-auto">

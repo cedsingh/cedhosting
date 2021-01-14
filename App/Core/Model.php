@@ -1,5 +1,5 @@
 <?php
-require_once "./Config/DBConf.php";
+include_once APP_ROOT . "/Config/DBConf.php";
 class Model extends DBConf
 {
     private $stmt;

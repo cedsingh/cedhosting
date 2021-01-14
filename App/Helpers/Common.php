@@ -3,9 +3,9 @@
 use \PHPMailer\PHPMailer\PHPMailer;
 use \PHPMailer\PHPMailer\SMTP;
 
-require_once "./Core/Model.php";
-require_once "./Libs/PHPMailer/PHPMailer.php";
-require_once "./Libs/PHPMailer/SMTP.php";
+require_once APP_ROOT . "/Core/Model.php";
+require_once APP_ROOT . "/Libs/PHPMailer/PHPMailer.php";
+require_once APP_ROOT . "/Libs/PHPMailer/SMTP.php";
 class Common extends Model
 {
 

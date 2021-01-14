@@ -1,5 +1,5 @@
 <?php
-require_once "./Core/Controller.php";
+require_once APP_ROOT . "/Core/Controller.php";
 
 class AccountController extends Controller
 {
@@ -11,7 +11,6 @@ class AccountController extends Controller
     function index()
     {
         $data['title'] = "Register";
-        $this->setView('login');
         $this->render($data);
     }
 
