@@ -31,6 +31,11 @@ class Controller
         }
     }
 
+    public function redirect($page)
+    {
+        header("Location: " . $page);
+    }
+
     function __call($function, $args)
     {
         die("Action $function not found.");

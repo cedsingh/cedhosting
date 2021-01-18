@@ -5,7 +5,7 @@
 	<div class="container">
 		<div class="banner-grids">
 			<div class="col-md-6 banner-grid">
-				<img src="Public/images/srceen.png" class="img-responsive" alt="" />
+				<img src="images/srceen.png" class="img-responsive" alt="" />
 			</div>
 			<div class="col-md-6 banner-grid">
 				<h3>Unlimited Web Hosting</h3>
@@ -193,21 +193,21 @@
 			<h5>We like to keep everyone updated</h5>
 			<div class="post-grids">
 				<div class="col-md-4 post-grid">
-					<a href="single.html" class="mask"><img src="Public/images/p1.jpg" class="img-responsive zoom-img" alt="/"></a>
+					<a href="single.html" class="mask"><img src="images/p1.jpg" class="img-responsive zoom-img" alt="/"></a>
 					<a href="single.html">
 						<h4>Vestibulum ipsums eros</h4>
 					</a>
 					<p>We strive to deliver the very best possible work that’s available out there, at any time. That’s how we set ourselves apart from the competition.</p>
 				</div>
 				<div class="col-md-4 post-grid">
-					<a href="single.html" class="mask"><img src="Public/images/p2.jpg" class="img-responsive zoom-img" alt="/"></a>
+					<a href="single.html" class="mask"><img src="images/p2.jpg" class="img-responsive zoom-img" alt="/"></a>
 					<a href="single.html">
 						<h4>Vestibulum ipsums eros</h4>
 					</a>
 					<p>We strive to deliver the very best possible work that’s available out there, at any time. That’s how we set ourselves apart from the competition.</p>
 				</div>
 				<div class="col-md-4 post-grid">
-					<a href="single.html" class="mask"><img src="Public/images/p3.jpg" class="img-responsive zoom-img" alt="/"></a>
+					<a href="single.html" class="mask"><img src="images/p3.jpg" class="img-responsive zoom-img" alt="/"></a>
 					<a href="single.html">
 						<h4>Vestibulum ipsums eros</h4>
 					</a>

@@ -4,7 +4,11 @@ class HostingModel extends Model
 {
     function getProducts($id)
     {
-        $sql = "SELECT * FROM `tbl_product_description` WHERE prod_id = $id";
+        $sql = "SELECT * 
+                FROM `tbl_product` p 
+                JOIN `tbl_product_description` pd
+                ON p.id = pd.prod_id 
+                WHERE p.prod_parent_id = $id";
         $this->query($sql);
         $result = $this->all();
         if ($result) {

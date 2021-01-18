@@ -6,17 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
+  <base href="<?= ROOT ?>">
   <title><?= $data['title'] ?></title>
   <!-- Favicon -->
-  <link rel="icon" href="Public/assets/img/brand/favicon.png" type="image/png">
+  <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
-  <link rel="stylesheet" href="Public/assets/vendor/nucleo/css/nucleo.css" type="text/css">
-  <link rel="stylesheet" href="Public/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <link rel="stylesheet" href="assets/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
   <!-- Page plugins -->
   <!-- Argon CSS -->
-  <link rel="stylesheet" href="Public/assets/css/argon.css?v=1.2.0" type="text/css">
+  <link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
 </head>
 
 <body>
@@ -40,9 +41,9 @@
                 <span class="nav-link-text">Products</span>
               </a>
               <div id="product" class="collapse">
-                <a href="index.php?action=admin&method=category" class="nav-item nav-link">Add Category</a>
-                <a class="nav-item nav-link">Add Product</a>
-                <a class="nav-item nav-link">View Products</a>
+                <a href="admin/category" class="nav-item nav-link">Add Category</a>
+                <a href="admin/product/add" class="nav-item nav-link">Add Product</a>
+                <a href="product" class="nav-item nav-link">View Products</a>
                 <a class="nav-item nav-link">Promocodes/Offers</a>
               </div>
             </li>
@@ -184,12 +185,12 @@
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="Public/assets/img/theme/team-1.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="assets/img/theme/team-1.jpg" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
                           <div>
-                            <h4 class="mb-0 text-sm">John Snow</h4>
+                            <h4 class="mb-0 text-sm"><?= $data['name'] ?></h4>
                           </div>
                           <div class="text-right text-muted">
                             <small>2 hrs ago</small>
@@ -203,7 +204,7 @@
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="Public/assets/img/theme/team-2.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="assets/img/theme/team-2.jpg" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -222,7 +223,7 @@
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="Public/assets/img/theme/team-3.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="assets/img/theme/team-3.jpg" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -241,7 +242,7 @@
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="Public/assets/img/theme/team-4.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="assets/img/theme/team-4.jpg" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -260,7 +261,7 @@
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="Public/assets/img/theme/team-5.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="assets/img/theme/team-5.jpg" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -331,10 +332,10 @@
               <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="Public/assets/img/theme/team-4.jpg">
+                    <img alt="Image placeholder" src="assets/img/theme/team-4.jpg">
                   </span>
                   <div class="media-body  ml-2  d-none d-lg-block">
-                    <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+                    <span class="mb-0 text-sm  font-weight-bold"><?= $data['name'] ?></span>
                   </div>
                 </div>
               </a>
@@ -359,7 +360,7 @@
                   <span>Support</span>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#!" class="dropdown-item">
+                <a href="login/logout" class="dropdown-item">
                   <i class="ni ni-user-run"></i>
                   <span>Logout</span>
                 </a>
@@ -766,9 +767,9 @@
         <!-- Add Category Page -->
         <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
         <script>
-            tinymce.init({
-              selector: '#productDesc'
-            });
+          tinymce.init({
+            selector: '#productDesc'
+          });
         </script>
         <div class="container-fluid">
           <div class="row justify-content-center m-4">
@@ -776,7 +777,7 @@
               <div class="card-haeder">
                 <h2>Add Category</h2>
               </div>
-              <form id="addCategory" action="index.php?action=admin&method=category" method="post">
+              <form id="addCategory" action="admin/category" method="post">
                 <?php if (array_key_exists("msg", $data)) { ?>
                   <div class="alert alert-secondary">
                     <?= $data['msg'] ?>
@@ -786,12 +787,7 @@
                   <label for="productName">Product name</label>
                   <input type="text" name="name" class="form-control" id="productName" placeholder="Product">
                 </div>
-                <div class="form-group">
-                  <label for="productParent">Parent Category</label>
-                  <select id="productParent" name="parent" class="form-control">
-                    <option selected>Hosting</option>
-                  </select>
-                </div>
+
                 <div class="form-group">
                   <label for="productAvailable">Available?</label>
                   <select id="productAvailable" name="available" class="form-control">
@@ -807,13 +803,28 @@
               </form>
             </div>
           </div>
-          <table class="table">
-            <tr>
-                  <th>Name</th>
-                  <th>Parent Name</th>
-                  <th>Description</th>
-                  <th>Available</th>
-            </tr>
+          <table class="table category-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Parent Name</th>
+                <th>Description</th>
+                <th>Available</th>
+                <th colspan="2">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php foreach ($data['categories'] as $value) : ?>
+                <tr>
+                  <td><?= $value['prod_name'] ?></td>
+                  <td>Hosting</td>
+                  <td><?= $value['description'] ?></td>
+                  <td><?= $value['prod_available'] ? "Yes" : "No" ?></td>
+                  <td><a class="btn btn-danger" href="javascript:void(0)" data-id="<?= $value['id'] ?>">DEL</a></td>
+                  <td><a class="btn btn-secondary" href="admin/category/edit/<?= $value['id'] ?>">EDIT</a></td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
           </table>
         </div>
         <!-- Add Category Page Ends -->
@@ -828,7 +839,7 @@
                   echo "<div class='alert alert-success'>{$data['msg']}</div>"
                 ?>
               </div>
-              <form id="addProduct" method="post" action="index.php?action=admin&method=product&param=add">
+              <form id="addProduct" method="post" action="admin/product/add">
                 <div class="border-bottom">
                   <h2>Product details</h2>
                   <div class="form-group">
@@ -891,6 +902,13 @@
                     <input type="number" name="mailbox" class="form-control" id="mailbox">
                     <small>Enter Nnumber of mailbox will be provided, enter 0 if none</small>
                   </div>
+                  <div class="form-group">
+                    <label for="available">Available</label>
+                    <select name="available" class="form-control">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                    </select>
+                  </div>
                 </div>
                 <input type="submit" name="submit" class="btn btn-primary" value="CREATE">
               </form>
@@ -929,16 +947,17 @@
   </div>
   <!-- Argon Scripts -->
   <!-- Core -->
-  <script src="Public/assets/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="Public/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="Public/assets/vendor/js-cookie/js.cookie.js"></script>
-  <script src="Public/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-  <script src="Public/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/js-cookie/js.cookie.js"></script>
+  <script src="assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
   <!-- Optional JS -->
-  <script src="Public/assets/vendor/chart.js/dist/Chart.min.js"></script>
-  <script src="Public/assets/vendor/chart.js/dist/Chart.extension.js"></script>
+  <script src="assets/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="assets/vendor/chart.js/dist/Chart.extension.js"></script>
   <!-- Argon JS -->
-  <script src="Public/assets/js/argon.js?v=1.2.0"></script>
+  <script src="assets/js/argon.js?v=1.2.0"></script>
+  <script src="js/index.js"></script>
 </body>
 
 </html>

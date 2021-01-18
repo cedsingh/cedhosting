@@ -8,7 +8,7 @@
 		<div class="main-1">
 			<div class="container">
 				<div class="register">
-					<form id="signupForm" action="index.php?action=account&method=create" onsubmit="return validateSignup(this.id);" method="post">
+					<form id="signupForm" action="account/create" onsubmit="return validateSignup(this.id);" method="post">
 						<div class="alert alert-danger" style="display: none;"></div>
 						<div class="register-top-grid">
 							<h3>Register</h3>

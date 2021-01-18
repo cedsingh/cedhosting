@@ -10,9 +10,11 @@ class LoginModel extends Model
         $this->set(":password", md5($password));
         $result = $this->single();
         if ($result) {
-            return $result['active'];
+            return $result;
         } else {
-            return -1;
+            return [
+                "active" => -1
+            ];
         }
     }
 }

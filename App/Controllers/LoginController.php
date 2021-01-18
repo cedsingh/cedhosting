@@ -13,19 +13,30 @@ class LoginController extends Controller
         if (isset($_POST['submit'])) {
             extract($_POST);
             $result = $this->model->login($email, $password);
-            if ($result == -1) {
+            if ($result['active'] == -1) {
                 $data['msg'] = "Incorrect email/password";
                 $this->render($data);
-            } else if ($result == 0) {
+            } else if ($result['active'] == 0) {
                 $data['msg'] = "Not approved";
                 $this->render($data);
-            } else if ($result == 2) {
+            } else if ($result['active'] == 2) {
                 $data['msg'] = "Blocked by admin";
                 $this->render($data);
             } else {
-                header("Location: customer");
+                $_SESSION['user'] = $result;
+                if ($result['is_admin'] == 0) {
+                    header("Location: customer");
+                } else {
+                    header("Location: admin");
+                }
             }
         }
         $this->render($data);
+    }
+
+    function logout()
+    {
+        unset($_SESSION['user']);
+        $this->redirect("../login");
     }
 }

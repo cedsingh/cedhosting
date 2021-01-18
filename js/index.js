@@ -1,4 +1,66 @@
-$(function () {});
+var productData;
+$(function () {
+  $(".hosting-page .us-button").click(function () {
+    productData = $(this).data("product");
+    $("#totalPrice").html(productData["price"][0]);
+    console.log(productData);
+  });
+  $(".modal").on("click", ".btn-primary", function () {
+    cartHandler(
+      "add",
+      productData["id"],
+      productData["name"],
+      productData["price"][$("#planType").val()]
+    );
+  });
+
+  $("#planType").change(function () {
+    $("#totalPrice").html(productData["price"][$(this).val()]);
+  });
+  if ($("span").is("#cartValue")) {
+    cartHandler("get");
+  }
+  $(".category-table").on("click", ".btn-danger", function () {
+    console.log("It works");
+    let c = confirm("Are you sure you want to delete?");
+    if (c) {
+      window.location.href = "admin/category/delete/" + $(this).data("id");
+    }
+  });
+
+  //PayPal integration
+  if (typeof paypal !== "undefined") {
+    paypal
+      .Buttons({
+        style: {
+          layout: "vertical",
+          color: "blue",
+          shape: "rect",
+          label: "paypal",
+        },
+        createOrder: function (data, actions) {
+          // This function sets up the details of the transaction, including the amount and line item details.
+          return actions.order.create({
+            purchase_units: [
+              {
+                amount: {
+                  value: $("#totalPrice").text(),
+                },
+              },
+            ],
+          });
+        },
+        onApprove: function (data, actions) {
+          // This function captures the funds from the transaction.
+          return actions.order.capture().then(function (details) {
+            // This function shows a transaction success message to your buyer.
+            alert("Transaction completed by " + details.payer.name.given_name);
+          });
+        },
+      })
+      .render("#paypal-button-container");
+  }
+});
 
 /* Registration function*/
 
@@ -136,7 +198,7 @@ function validateAnswer(value) {
 function verifyOtp(type = "email") {
   $("#" + type + "Button").prop("disabled", true);
   $.ajax({
-    url: "index.php?action=rest&method=verify",
+    url: "rest/verify",
     method: "post",
     dataType: "json",
     data: {
@@ -159,24 +221,39 @@ function verifyOtp(type = "email") {
 
 /** OTP confirmation functions */
 
+/*Cart Functions*/
+
 //Add to cart
 
-function addToCart(elId, productId) {
-  let el = $("#" + elId);
-  el.prop("disabled", true);
+function cartHandler(
+  action = "add",
+  productId = 0,
+  productName = "",
+  price = 0
+) {
+  let data;
+  if (action == "add") {
+    data = {
+      id: productId,
+      name: productName,
+      price: price,
+      qty: 1,
+    };
+  }
   $.ajax({
-    url: "index.php?action=rest&method=addtocart",
+    url: "rest/cart/" + action,
     method: "post",
     dataType: "json",
-    data: {
-      id: productId,
-    },
+    data: data,
     error: (e) => console.log(e),
     success: (res) => {
       if (res["cart"]) {
-        el.html("added");
+        $("#exampleModal").modal("hide");
         $("#cartValue").html(res["count"]);
       }
     },
   });
 }
+
+/** Paypal Integrattion */
+function payWithPayPal() {}

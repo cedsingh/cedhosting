@@ -1,25 +1,29 @@
 <?php
-require_once "./Core/Controller.php";
+require_once APP_ROOT . "/Core/Controller.php";
 class AdminController extends Controller
 {
     function __construct()
     {
         Controller::__construct(self::class);
+        if (!Auth::isAdmin()) {
+            $this->redirect("login");
+        }
     }
 
     function index()
     {
         $data['title'] = "Admin Dashboard";
         $data['page'] = "index";
+        $data['name'] = isset($_SESSION['user']) ? $_SESSION['user']['name'] : "";
         $this->render($data);
     }
 
     function category()
     {
         if (isset($_POST['submit'])) {
+            var_dump($_POST);
             extract($_POST);
             $data = [
-                $parent,
                 $name,
                 $available,
                 $description
@@ -28,6 +32,8 @@ class AdminController extends Controller
                 $data['msg'] = "Category added";
             }
         }
+        $data['categories'] = $this->model->getAllCategories();
+        $data['name'] = isset($_SESSION['user']) ? $_SESSION['user']['name'] : "";
         $data['title'] = "Add Category - Admin Dashboard";
         $data['page'] = "category";
         $this->render($data);
@@ -35,13 +41,12 @@ class AdminController extends Controller
 
     function product()
     {
-        $data['title'] = "Product - Admin Dashboard";
-        $data['page'] = "product";
-        if (isset($_GET['param'])) {
+        $data['title'] = "Add Product - Admin Dashboard";
+        $data['page'] = "product-add";
+        if (isset($this->params[0]) && $this->params[0] == "add") {
             if (isset($_POST['submit'])) {
                 extract($_POST);
                 $prodDescription = json_encode([
-                    "name" => $name,
                     "url" => $url,
                     "webspace" => $webspace,
                     "bandwidth" => $bandwidth,
@@ -50,7 +55,9 @@ class AdminController extends Controller
                     "mailbox" => $mailbox
                 ]);
                 $productData = [
+                    $name,
                     $category,
+                    $available,
                     $prodDescription,
                     $monthly_price,
                     $annual_price,
@@ -62,6 +69,7 @@ class AdminController extends Controller
                     $data['msg'] = "Error occured";
                 }
             }
+            $data['name'] = isset($_SESSION['user']) ? $_SESSION['user']['name'] : "";
             $data['page'] = "product-add";
             $data['tilte'] = "Product - Admin Dashboard";
         }

@@ -1,5 +1,5 @@
 <?php
-require_once "./Core/Model.php";
+require_once APP_ROOT . "/Core/Model.php";
 class RestModel extends Model
 {
     public function verifyUser($type = "email")
@@ -12,10 +12,11 @@ class RestModel extends Model
         return false;
     }
 
-    public function approveUser($email) {
+    public function approveUser($email)
+    {
         $sql = "UPDATE `tbl_user` SET active = 1 WHERE email = '$email'";
         $this->query($sql);
-        if($this->run()) {
+        if ($this->run()) {
             return true;
         }
         return false;

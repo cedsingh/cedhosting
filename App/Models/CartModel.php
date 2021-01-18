@@ -1,6 +1,6 @@
 <?php
-require_once "./Core/Model.php";
-class RestModel extends Model
+require_once APP_ROOT . "/Core/Model.php";
+class CartModel extends Model
 {
     function getCart()
     {
@@ -19,10 +19,19 @@ class RestModel extends Model
         $cart = [];
         if (isset($_COOKIE['cart'])) {
             $cart = json_decode($_COOKIE['cart'], true);
-            array_push($cart, $data);
+            foreach ($cart as $key => $value) {
+                if ($data["id"] == $value['id']) {
+                    $cart[$key]['qty'] += 1;
+                    $present = true;
+                }
+            }
+            if (!isset($present)) {
+                array_push($cart, $data);
+            }
         } else {
-            setcookie("cart", json_decode($data), time() + 3600, "/", NULL, 0);
+            $cart[0] = $data;
         }
+        setcookie("cart", json_encode($cart), time() + 3600, "/", NULL, 0);
         return [
             "cart" => $cart,
             "count" => sizeof($cart)
