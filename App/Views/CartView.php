@@ -22,7 +22,7 @@
             </tbody>
         </table>
         <div class="">
-            <a class="button us-button" id="checkoutButtom">CHECKOUT</a>
+            <a href="checkout" class="button us-button" id="checkoutButtom">CHECKOUT</a>
         </div>
     </div>
 </div>

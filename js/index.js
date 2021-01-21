@@ -29,7 +29,10 @@ $(function () {
   });
 
   //PayPal integration
-  if (typeof paypal !== "undefined") {
+  if (
+    typeof paypal !== "undefined" &&
+    $("div").is("#paypal-button-container")
+  ) {
     paypal
       .Buttons({
         style: {
@@ -51,12 +54,20 @@ $(function () {
           });
         },
         onApprove: function (data, actions) {
-          // This function captures the funds from the transaction.
           return actions.order.capture().then(function (details) {
-            // This function shows a transaction success message to your buyer.
-            alert("Transaction completed by " + details.payer.name.given_name);
+            if (
+              details.purchase_units[0].payments.captures[0].status ==
+              "COMPLETED"
+            ) {
+              handleOrder(
+                false,
+                details.purchase_units[0].payments.captures[0].id,
+                details.purchase_units[0].payments.captures[0].amount.value
+              );
+            }
           });
         },
+        onError: (err) => console.log(err),
       })
       .render("#paypal-button-container");
   }
@@ -255,5 +266,22 @@ function cartHandler(
   });
 }
 
-/** Paypal Integrattion */
-function payWithPayPal() {}
+function handleOrder(isCOD = false, txnId = 0, amount = 0) {
+  $.ajax({
+    url: "rest/order",
+    method: "post",
+    dataType: "json",
+    data: {
+      is_cod: isCOD,
+      amount: amount,
+      txn_id: txnId,
+    },
+    error: (e) => console.log(e),
+    success: function (res) {
+      if (res["success"]) {
+        $(".checkout-page").html("<h2>Paid successfully</h2>");
+        $("#cartValue").html(res["cartValue"]);
+      }
+    },
+  });
+}

@@ -48,4 +48,33 @@ class RestController extends Controller
             }
         }
     }
+    function order()
+    {
+        if (isset($_COOKIE['cart']) && isset($_POST['txn_id'])) {
+            $cart = json_decode($_COOKIE['cart'], true);
+            $totalAmount = array_reduce($cart, function ($total, $item) {
+                return $total + $item['price'];
+            }, 0);
+            if ($totalAmount == $_POST['amount']) {
+                $data = [
+                    "user_id" => 20,
+                    "user_billing_id" => 1,
+                    "status" => $_POST['is_cod'] == false ? 2 : 1,
+                    "promocode_applied_id" => 0,
+                    "discount_amt" => 0,
+                    "total_amt_after_dis" => 0,
+                    "tax_amt" => 0,
+                    "txn_id" => $_POST['txn_id'],
+                    "final_invoice_amt" => $totalAmount
+                ];
+                if ($this->model->createOrder($data)) {
+                    unset($_COOKIE['cart']);
+                    echo json_encode([
+                        "success" => true,
+                        "cartValue" => 0
+                    ]);
+                };
+            }
+        }
+    }
 }

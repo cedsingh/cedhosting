@@ -16,4 +16,12 @@ class Auth
         }
         return false;
     }
+
+    static function getUserId()
+    {
+        if (isset($_SESSION['user'])) {
+            return $_SESSION['user']['id'];
+        }
+        return 0;
+    }
 }

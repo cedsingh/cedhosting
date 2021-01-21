@@ -71,7 +71,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </button>
                         <div class="navbar-brand">
                             <h1><a href="/">
-                                    <span style="color:#e7663f">CED</span><span style="color: #585CA7">Hosting</span>
+                                    <span style="color:#e7663f">Hosting</span><span style="color: #585CA7">Ways</span>
                                 </a></h1>
                         </div>
                     </div>

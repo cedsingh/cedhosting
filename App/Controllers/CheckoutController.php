@@ -12,28 +12,48 @@ class CheckoutController extends Controller
 
     function index()
     {
-        $states = $this->model->getStates();
         $cart = [];
+        $addresses = $this->model->getAddressesById(20);
         if (isset($_COOKIE['cart'])) {
             $cart = json_decode($_COOKIE['cart'], true);
             $cartTotal = array_reduce($cart, function ($total, $item) {
                 return $total + $item["price"];
             }, 0);
         }
+        if (isset($_POST['billing_name'])) {
+            extract($_POST);
+            $data = [
+                $billing_name,
+                $house_no,
+                $city,
+                $state,
+                $country,
+                $pincode
+            ];
+            if ($this->model->addAddress(20, $data)) {
+
+                $msg = "Address added";
+            } else {
+                $msg = "Failed";
+            }
+        }
         $this->render([
             "title" => "Checkout",
-            "page" => "checkout",
-            "states" => $states,
+            "page" => "payment",
             "cart" => $cart,
-            "cart_total" => $cartTotal
+            "addresses" => $addresses,
+            "cart_total" => $cartTotal ?? 0,
+            "msg" => $msg ?? ""
         ]);
     }
 
-    function payment()
+    function address()
     {
+        $states = $this->model->getStates();
         $this->render([
-            "title" => "Payment",
-            "page" => "payment",
+            "title" => "Add Address",
+            "page" => "addresses",
+            "states" => $states
         ]);
     }
 }
