@@ -68,6 +68,7 @@ class RestController extends Controller
                     "final_invoice_amt" => $totalAmount
                 ];
                 if ($this->model->createOrder($data)) {
+                    setcookie("cart", "", time() - 3600, "/", NULL, 0);
                     unset($_COOKIE['cart']);
                     echo json_encode([
                         "success" => true,
